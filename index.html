@@ -30,27 +30,9 @@
     <main class="container">
         <section id="cantiques" class="cantiques-section">
             <h2>📚 Notre Collection</h2>
-            
-            <div class="filters-container">
-                <div class="search-box">
-                    <input type="text" id="search" placeholder="Rechercher par titre ou artiste..." class="search-input">
-                </div>
-                
-                <div class="advanced-filters">
-                    <button id="toggle-filters" class="toggle-btn">🔍 Filtres avancés</button>
-                    <div id="filters-panel" class="filters-panel hidden">
-                        <div id="filter-controls" class="filter-controls">
-                            <!-- Les filtres seront générés dynamiquement -->
-                        </div>
-                        <button id="reset-filters" class="reset-btn">Réinitialiser les filtres</button>
-                    </div>
-                </div>
+            <div class="filters">
+                <input type="text" id="search" placeholder="Rechercher par titre ou artiste..." class="search-input">
             </div>
-
-            <div class="results-info">
-                <span id="results-count">Chargement...</span>
-            </div>
-
             <div id="cantiques-grid" class="cantiques-grid">
                 <!-- Les cantiques seront chargés ici dynamiquement -->
             </div>
