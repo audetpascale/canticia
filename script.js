@@ -73,6 +73,17 @@ function displayCantiques(cantiques, filtered = null) {
     }
 
     grid.innerHTML = toDisplay.map(canticle => createCanticleCard(canticle)).join('');
+    updateResultsCount(toDisplay.length, cantiques.length);
+}
+
+// Update results count
+function updateResultsCount(displayed, total) {
+    const countElement = document.getElementById('results-count');
+    if (displayed === total) {
+        countElement.textContent = `${total} cantique${total > 1 ? 's' : ''}`;
+    } else {
+        countElement.textContent = `${displayed} résultat${displayed > 1 ? 's' : ''} sur ${total}`;
+    }
 }
 
 // Create canticle card HTML
@@ -80,6 +91,7 @@ function createCanticleCard(canticle) {
     // Safely access properties with fallbacks
     const titre = canticle.titre || canticle.title || 'Sans titre';
     const artiste = canticle.artiste || canticle.artist || 'Inconnu';
+    const annee = canticle.année || canticle.year || '2026';
     const description = canticle.description || '';
     const liens = canticle.liens || canticle.links || '';
     const tags = canticle.tags || canticle.categories || '';
@@ -101,8 +113,13 @@ function createCanticleCard(canticle) {
 
     return `
         <div class="canticle-card">
-            <h3>${escapeHtml(titre)}</h3>
-            <div class="artist">👤 ${escapeHtml(artiste)}</div>
+            <div class="card-header">
+                <div>
+                    <h3>${escapeHtml(titre)}</h3>
+                    <div class="artist">👤 ${escapeHtml(artiste)}</div>
+                </div>
+                <div class="year">© ${escapeHtml(annee)}</div>
+            </div>
             ${description ? `<p>${escapeHtml(description)}</p>` : ''}
             ${tagsHTML ? `<div class="tags">${tagsHTML}</div>` : ''}
             <div class="links">

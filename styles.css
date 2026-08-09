@@ -109,9 +109,13 @@ body {
     text-align: center;
 }
 
-.filters {
+.filters-container {
     margin-bottom: 2rem;
     text-align: center;
+}
+
+.search-box {
+    margin-bottom: 1rem;
 }
 
 .search-input {
@@ -130,6 +134,13 @@ body {
     box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
 }
 
+.results-info {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
 .cantiques-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -143,6 +154,8 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     transition: all 0.3s;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
 }
 
 .canticle-card:hover {
@@ -150,23 +163,45 @@ body {
     box-shadow: 0 12px 30px rgba(139, 92, 246, 0.15);
 }
 
-.canticle-card h3 {
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.card-header div:first-child {
+    flex: 1;
+}
+
+.card-header h3 {
     color: var(--primary);
     margin-bottom: 0.5rem;
     font-size: 1.3rem;
+}
+
+.year {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    margin-left: 1rem;
 }
 
 .canticle-card .artist {
     color: var(--secondary);
     font-size: 0.9rem;
     font-weight: 600;
-    margin-bottom: 1rem;
 }
 
 .canticle-card p {
     color: #64748b;
     margin-bottom: 1rem;
     font-size: 0.95rem;
+    flex-grow: 1;
 }
 
 .canticle-card .tags {
@@ -188,6 +223,7 @@ body {
 .canticle-card .links {
     display: flex;
     gap: 1rem;
+    margin-top: auto;
 }
 
 .canticle-card a {
@@ -239,9 +275,10 @@ body {
 }
 
 .participate-card p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
     opacity: 0.95;
+    line-height: 1.7;
 }
 
 .cta-group {
@@ -249,6 +286,7 @@ body {
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 1.5rem;
 }
 
 .btn {
@@ -333,14 +371,26 @@ body {
     font-size: 1.8rem;
 }
 
+.licence-content > p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.licence-content h3 {
+    color: var(--primary);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
 .licence-content ul {
     list-style: none;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
 }
 
 .licence-content li {
     padding: 0.8rem 0;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--text);
 }
 
@@ -352,6 +402,32 @@ body {
 
 .licence-content a:hover {
     text-decoration: underline;
+}
+
+.licence-divider {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 2rem 0;
+}
+
+.charter-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary);
+    margin-top: 1.5rem;
+}
+
+.charter-box p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    color: var(--text);
+}
+
+.charter-note {
+    font-size: 0.9rem;
+    color: #64748b;
+    font-style: italic;
 }
 
 /* Footer */
@@ -390,6 +466,15 @@ body {
 
     .cantiques-grid {
         grid-template-columns: 1fr;
+    }
+
+    .card-header {
+        flex-direction: column;
+    }
+
+    .year {
+        margin-left: 0;
+        margin-top: 0.5rem;
     }
 
     .cta-group {
