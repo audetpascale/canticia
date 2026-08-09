@@ -23,16 +23,34 @@
         <div class="hero-content">
             <h2>Cantiques générés par l'Intelligence Artificielle</h2>
             <p>Une collection collaborative et libre de cantiques dont la musique a été créée par l'IA.</p>
-            <p class="subtitle">Copyleft · Libre d'utilisation et de modification</p>
+            <p class="subtitle">CC BY-NC-SA 4.0 · Libre d'utilisation et de modification</p>
         </div>
     </header>
 
     <main class="container">
         <section id="cantiques" class="cantiques-section">
             <h2>📚 Notre Collection</h2>
-            <div class="filters">
-                <input type="text" id="search" placeholder="Rechercher par titre ou artiste..." class="search-input">
+            
+            <div class="filters-container">
+                <div class="search-box">
+                    <input type="text" id="search" placeholder="Rechercher par titre ou artiste..." class="search-input">
+                </div>
+                
+                <div class="advanced-filters">
+                    <button id="toggle-filters" class="toggle-btn">🔍 Filtres avancés</button>
+                    <div id="filters-panel" class="filters-panel hidden">
+                        <div id="filter-controls" class="filter-controls">
+                            <!-- Les filtres seront générés dynamiquement -->
+                        </div>
+                        <button id="reset-filters" class="reset-btn">Réinitialiser les filtres</button>
+                    </div>
+                </div>
             </div>
+
+            <div class="results-info">
+                <span id="results-count">Chargement...</span>
+            </div>
+
             <div id="cantiques-grid" class="cantiques-grid">
                 <!-- Les cantiques seront chargés ici dynamiquement -->
             </div>
@@ -55,11 +73,11 @@
             <div class="faq-grid">
                 <div class="faq-item">
                     <h3>Puis-je utiliser ces cantiques ?</h3>
-                    <p>Oui ! Tous les cantiques sont en Copyleft. Vous pouvez les utiliser, modifier et redistribuer librement, tant que vous respectez la même licence.</p>
+                    <p>Oui ! Tous les cantiques sont sous CC BY-NC-SA 4.0. Vous pouvez les utiliser, modifier et redistribuer librement, tant que ce n'est pas à titre commercial et que vous respectez la même licence.</p>
                 </div>
                 <div class="faq-item">
-                    <h3>Qu'est-ce que le Copyleft ?</h3>
-                    <p>Le Copyleft signifie que vous êtes libre d'utiliser et de modifier l'œuvre, mais toute modification doit être partagée sous la même licence.</p>
+                    <h3>Qu'est-ce que CC BY-NC-SA ?</h3>
+                    <p>CC BY-NC-SA signifie : Attribution (BY) · Pas d'Utilisation Commerciale (NC) · Partage dans les Mêmes Conditions (SA). Vous êtes libre de modifier l'œuvre, mais toute modification doit être partagée sous la même licence.</p>
                 </div>
                 <div class="faq-item">
                     <h3>Comment envoyer mes stems ?</h3>
@@ -75,22 +93,39 @@
         <section id="licence" class="licence-section">
             <h2>📋 À propos de la Licence</h2>
             <div class="licence-content">
-                <p><strong>Tous les cantiques de CanticIA sont distribués sous Copyleft.</strong></p>
-                <p>Cela signifie :</p>
+                <p><strong>© 2026</strong></p>
+                <p>Cette œuvre est mise à disposition selon les termes de la licence <strong>Creative Commons Attribution – Pas d'Utilisation Commerciale – Partage dans les Mêmes Conditions 4.0 International (CC BY-NC-SA 4.0)</strong>.</p>
+                
+                <h3>Ce que vous pouvez faire :</h3>
                 <ul>
                     <li>✅ Libre d'écouter, télécharger et partager</li>
                     <li>✅ Libre de modifier et créer des versions dérivées</li>
-                    <li>✅ Libre d'utiliser commercialement ou non-commercialement</li>
-                    <li>⚠️ Toute œuvre dérivée doit conserver la même licence</li>
+                    <li>✅ Libre d'utiliser à titre personnel ou éducatif</li>
                 </ul>
-                <p>Pour plus d'informations, consultez la <a href="https://www.gnu.org/licenses/copyleft.fr.html" target="_blank">documentation GNU Copyleft</a>.</p>
+
+                <h3>Conditions à respecter :</h3>
+                <ul>
+                    <li>⚖️ Toute œuvre dérivée doit conserver la même licence (CC BY-NC-SA 4.0)</li>
+                    <li>⚖️ Utilisation non-commerciale uniquement</li>
+                    <li>⚖️ Attribution obligatoire à l'auteur original</li>
+                </ul>
+
+                <p><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" target="_blank" class="license-link">📖 Consultez la licence complète</a></p>
+
+                <hr class="licence-divider">
+
+                <h3>✨ Charte de l'Œuvre</h3>
+                <div class="charter-box">
+                    <p>Au-delà des termes légaux de la licence ci-dessus, nous souhaitons que toute personne qui écoute, partage, remixe ou transforme cette œuvre le fasse dans un esprit qui honore Dieu. Nous demandons donc, en toute bonne foi et sans valeur contractuelle contraignante, que cette œuvre ne soit ni tournée en dérision, ni détournée de manière irrévérencieuse, ni utilisée pour ridiculiser sa portée spirituelle.</p>
+                    <p class="charter-note">Cette charte relève de notre conviction personnelle et de notre souhait en tant qu'auteur — elle ne restreint pas les droits accordés par la licence CC BY-NC-SA 4.0 ci-dessus.</p>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 CanticIA · Tous les cantiques sont libres et en Copyleft</p>
+            <p>&copy; 2026 CanticIA · Tous les cantiques sont sous CC BY-NC-SA 4.0</p>
             <p><a href="mailto:canticia@example.com">Nous contacter</a> · <a href="https://github.com/audetpascale/canticia">GitHub</a></p>
         </div>
     </footer>
