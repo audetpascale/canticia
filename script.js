@@ -88,43 +88,43 @@ function updateResultsCount(displayed, total) {
 
 // Create canticle card HTML
 function createCanticleCard(canticle) {
-    // Safely access properties with fallbacks
-    const titre = canticle.titre || canticle.title || 'Sans titre';
-    const artiste = canticle.artiste || canticle.artist || 'Inconnu';
-    const annee = canticle.année || canticle.year || '2026';
+    // Map new column names
+    const title = canticle.title || 'Sans titre';
+    const author = canticle.author || 'Inconnu';
+    const year = canticle.year || '2026';
+    const style = canticle.style || '';
     const description = canticle.description || '';
-    const liens = canticle.liens || canticle.links || '';
-    const tags = canticle.tags || canticle.categories || '';
+    const youtube = canticle.youtube || '';
+    const stems = canticle.stems || '';
 
-    // Parse links (assuming format: "label:url|label:url")
-    const linksList = liens ? liens.split('|').map(l => {
-        const [label, url] = l.split(':').map(s => s.trim());
-        return { label, url };
-    }).filter(l => l.url) : [];
+    // Parse style/tags
+    const stylesList = style ? style.split(',').map(t => t.trim()).filter(t => t) : [];
 
-    // Parse tags
-    const tagsList = tags ? tags.split(',').map(t => t.trim()).filter(t => t) : [];
+    // Build links
+    const linksHTML = [];
+    if (youtube) {
+        linksHTML.push(`<a href="${escapeHtml(youtube)}" target="_blank" class="link-external">🎬 YouTube</a>`);
+    }
+    if (stems) {
+        linksHTML.push(`<a href="${escapeHtml(stems)}" target="_blank" class="link-external">🎵 Stems</a>`);
+    }
 
-    const linksHTML = linksList.map(link => `
-        <a href="${link.url}" target="_blank" class="link-external">🔗 ${link.label}</a>
-    `).join('');
-
-    const tagsHTML = tagsList.map(tag => `<span class="tag">${tag}</span>`).join('');
+    const stylesHTML = stylesList.map(s => `<span class="tag">${escapeHtml(s)}</span>`).join('');
 
     return `
         <div class="canticle-card">
             <div class="card-header">
                 <div>
-                    <h3>${escapeHtml(titre)}</h3>
-                    <div class="artist">👤 ${escapeHtml(artiste)}</div>
+                    <h3>${escapeHtml(title)}</h3>
+                    <div class="artist">👤 ${escapeHtml(author)}</div>
                 </div>
-                <div class="year">© ${escapeHtml(annee)}</div>
+                <div class="year">© ${escapeHtml(year)}</div>
             </div>
             ${description ? `<p>${escapeHtml(description)}</p>` : ''}
-            ${tagsHTML ? `<div class="tags">${tagsHTML}</div>` : ''}
+            ${stylesHTML ? `<div class="tags">${stylesHTML}</div>` : ''}
             <div class="links">
                 <a href="#" class="link-download">⬇️ Télécharger</a>
-                ${linksHTML}
+                ${linksHTML.join('')}
             </div>
         </div>
     `;
@@ -136,10 +136,11 @@ function setupSearch(cantiques) {
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase();
         const filtered = cantiques.filter(canticle => {
-            const titre = (canticle.titre || canticle.title || '').toLowerCase();
-            const artiste = (canticle.artiste || canticle.artist || '').toLowerCase();
+            const title = (canticle.title || '').toLowerCase();
+            const author = (canticle.author || '').toLowerCase();
             const description = (canticle.description || '').toLowerCase();
-            return titre.includes(query) || artiste.includes(query) || description.includes(query);
+            const style = (canticle.style || '').toLowerCase();
+            return title.includes(query) || author.includes(query) || description.includes(query) || style.includes(query);
         });
         displayCantiques(cantiques, filtered);
     });
