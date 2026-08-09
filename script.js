@@ -123,7 +123,6 @@ function createCanticleCard(canticle) {
             ${description ? `<p>${escapeHtml(description)}</p>` : ''}
             ${stylesHTML ? `<div class="tags">${stylesHTML}</div>` : ''}
             <div class="links">
-                <a href="#" class="link-download">⬇️ Télécharger</a>
                 ${linksHTML.join('')}
             </div>
         </div>
